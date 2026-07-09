@@ -1,4 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
+import type { FeatureCollection } from "geojson";
 
 export type RiskLevel = "Low" | "Moderate" | "High" | "Critical";
 export type Severity = "Minor" | "Major" | "Fatal";
@@ -97,7 +98,7 @@ export const nationalQuery = queryOptions({
 
 export const geoQuery = queryOptions({
   queryKey: ["rs", "geo"],
-  queryFn: () => fetchJson<GeoJSON.FeatureCollection>("/geo/india-states.geojson"),
+  queryFn: () => fetchJson<FeatureCollection>("/geo/india-states.geojson"),
   staleTime: Infinity,
 });
 
