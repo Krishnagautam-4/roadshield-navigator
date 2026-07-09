@@ -44,7 +44,12 @@ export const Route = createFileRoute("/dashboard")({
 
 const ALL = "all";
 
-function buildAnalytics(hotspots: Hotspot[], base: Analytics, year: string): Analytics {
+function buildAnalytics(
+  hotspots: Hotspot[],
+  allHotspots: Hotspot[],
+  base: Analytics,
+  year: string,
+): Analytics {
   const weight = (h: Hotspot) => (year === ALL ? h.accidents : (h.yearly[year] ?? 0) * 6);
   const group = (key: (h: Hotspot) => string) => {
     const out: Record<string, number> = {};
@@ -52,12 +57,9 @@ function buildAnalytics(hotspots: Hotspot[], base: Analytics, year: string): Ana
     return out;
   };
   const total = hotspots.reduce((a, h) => a + weight(h), 0);
-  const baseTotal = base.monthly.reduce((a, m) => a + m.accidents, 0);
-  const hotspotBaseTotal = Math.max(
-    1,
-    hotspots.length ? hotspots.reduce((a, h) => a + h.accidents, 0) : 1,
-  );
-  const ratio = baseTotal > 0 ? total / baseTotal : 0;
+  const allTotal = Math.max(1, allHotspots.reduce((a, h) => a + h.accidents, 0));
+  // Share of the full dataset represented by the filtered hotspots.
+  const share = Math.min(1, total / allTotal);
 
   const yearly = YEARS.map((y) => {
     const acc = hotspots.reduce((a, h) => a + (h.yearly[y] ?? 0), 0);
@@ -74,7 +76,7 @@ function buildAnalytics(hotspots: Hotspot[], base: Analytics, year: string): Ana
     yearly,
     monthly: base.monthly.map((m) => ({
       month: m.month,
-      accidents: Math.round((m.accidents / Math.max(1, baseTotal)) * (total || 0) * (baseTotal / hotspotBaseTotal) || m.accidents * ratio),
+      accidents: Math.round(m.accidents * share),
     })),
     topDistricts: Object.entries(districts)
       .map(([district, accidents]) => ({ district, accidents }))
