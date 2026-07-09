@@ -11,6 +11,11 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+
+const themeInit = `(function(){try{var t=localStorage.getItem('rs-theme');if(t==='light'){document.documentElement.classList.remove('dark');}}catch(e){}})();`;
+
 
 function NotFoundComponent() {
   return (
