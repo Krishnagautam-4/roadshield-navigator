@@ -82,20 +82,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "RoadShield India — Accident Hotspot Explorer" },
+      { title: "RoadShield India — Visualizing Accident Hotspots for Safer Roads" },
       {
         name: "description",
         content:
-          "Visualizing accident hotspots across India for safer roads. Interactive maps, state analytics and road safety insights.",
+          "Explore accident hotspots across every Indian state with interactive maps, analytics dashboards and road safety insights.",
       },
       { name: "author", content: "RoadShield India" },
-      { property: "og:title", content: "RoadShield India — Accident Hotspot Explorer" },
+      { property: "og:title", content: "RoadShield India — Visualizing Accident Hotspots for Safer Roads" },
       {
         property: "og:description",
-        content: "Interactive maps and analytics visualizing accident hotspots across India for safer roads.",
+        content: "Explore accident hotspots across every Indian state with interactive maps, analytics dashboards and road safety insights.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "RoadShield India — Visualizing Accident Hotspots for Safer Roads" },
+      { name: "twitter:description", content: "Explore accident hotspots across every Indian state with interactive maps, analytics dashboards and road safety insights." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ef2c192f-c500-4baf-9573-05520504e82c" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/ef2c192f-c500-4baf-9573-05520504e82c" },
     ],
     links: [
       {
