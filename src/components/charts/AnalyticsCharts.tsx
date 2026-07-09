@@ -60,7 +60,7 @@ export function AnalyticsCharts({ analytics }: { analytics: Analytics }) {
       <ChartCard title="Accident Severity Split" icon={PieIcon} index={1}>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
-            <Pie data={severityData} dataKey="value" nameKey="name" outerRadius="80%" label isAnimationActive>
+            <Pie data={severityData} dataKey="value" nameKey="name" outerRadius="80%" isAnimationActive>
               {severityData.map((d, i) => (
                 <Cell key={i} fill={SEVERITY_COLORS[d.name] ?? CHART_COLORS[i]} stroke="var(--card)" />
               ))}

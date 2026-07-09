@@ -117,7 +117,7 @@ function Dashboard() {
     if (!source) return null;
     const noFilters = vehicle === ALL && severity === ALL && district === ALL && year === ALL;
     if (noFilters) return source.analytics;
-    return buildAnalytics(filtered, source.analytics, year);
+    return buildAnalytics(filtered, source.hotspots, source.analytics, year);
   }, [source, filtered, vehicle, severity, district, year]);
 
   const hasFilters = vehicle !== ALL || severity !== ALL || district !== ALL || year !== ALL || stateSlug !== ALL;
