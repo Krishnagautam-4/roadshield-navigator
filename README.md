@@ -19,4 +19,4 @@ Designed with a focus on user experience and data visualization, the platform al
 
 **Built to demonstrate frontend engineering, interactive mapping, and data visualization while addressing the real-world challenge of road safety awareness.**
 
-# © Developed And Maintaned By - "KRISHNA"
+#### © Developed And Maintaned By - "KRISHNA"
